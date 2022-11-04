@@ -31,8 +31,9 @@
   ////
   // Iterate through all LLB triggers on the page
   for(const anchor of [...document.querySelectorAll("[data-llb-src]")]) {
+    let data = anchor.dataset;
     // Get the source
-    let src = anchor.dataset.llbSrc;
+    let src = data.llbSrc;
     // If it's 'href', get it from anchor's 'href' attribute
     if(src === "href") src = anchor.href;
     // Hijack anchor's click event
@@ -44,9 +45,14 @@
       const img = document.createElement("img");
       img.src = src;
       img.setAttribute("data-llb-removeme", ""); // We'll use this for cleanup
+      const first_child = anchor.firstElementChild;
       // If there's an alt text, copy it
-      if("llbAlt" in anchor.dataset) {
-        img.alt = anchor.dataset.llbAlt;
+      if("llbAlt" in data) {
+        img.alt = data.llbAlt;
+      } else if(first_child && "alt" in first_child) {
+        // Otherwise, check if the first element has an alt text
+        // If it does, copy that
+         img.alt = first_child.alt;
       }
       // Add image as first child of <figure>
       figure.prepend(img);

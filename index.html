@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <link rel="preconnect" href="https://cdn.avl.la/" crossorigin>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css?v=2">
 </head>
 <body>
   <header>
@@ -31,8 +31,11 @@
       <p>
         This code aims to create a progressively enhanced, lightweight,
         Wikipedia-like lightbox plugin in vanilla JS. LiteLightbox is comprised
-        of <strong>1,391 bytes</strong> of raw minified JavaScript, at
-        <a href="litelightbox.min.js">litelightbox.min.js</a>, and
+        of <strong>1,560 bytes</strong> of raw minified JavaScript, at
+        <a href="litelightbox.min.js">litelightbox.min.js</a> (uncompressed!).
+      </p>
+      <p>
+        Additionally, for the default styling <i>a la</i> Wikipedia, there's
         <strong>2,672 bytes</strong> of raw minified CSS, at
         <a href="litelightbox.min.css">litelightbox.min.css</a>, totalling a bit
         over 4&nbsp;KB of uncompressed goodies.
@@ -63,9 +66,7 @@
         users with JavaScript disabled.
       </p>
       <p style="text-align:center">
-        <a href="images/1-real-2018-miolo.png"
-          data-llb-src="href"
-          data-llb-alt="Photograph of a broken Brazilian coin.">
+        <a href="images/1-real-2018-miolo.png" data-llb-src="href">
           <img src="images/1-real-2018-miolo-250p.jpg"
                alt="Photograph of a broken Brazilian coin.">
         </a>
@@ -80,7 +81,7 @@
         Alternatively, if your trigger is an anchor which links to the
         full-resolution image via <code><span class="attr">href</span></code> already, you don't need to
         write the path again into <code><span class="attr">data-llb-src</span></code>; instead, you can
-        pass a value of "href" to it:
+        pass a value of <code><span class="str">"href"</span></code> to it:
       </p>
       <figure class="full-width">
       <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="highlight">"href"</span>>
@@ -88,12 +89,22 @@
 &lt;/<span class="tag">a</span>>
 </code></pre></figure>
       <p>
-        Don't forget your alt text! To add one to the full-resolution image,
-        simply add the attribute <code><span class="attr">data-llb-alt</span></code>:
+        Don't forget your alt text! If the first child of the <code><span class="attr">data-llb-src</span></code>
+        element is an <code>&lt;<span class="tag">img</span>></code> with alt
+        text, then that alt text will be copied to the full-resolution image.
+      </p>
+      <figure class="full-width">
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="highlight">alt="…"</span>>
+&lt;/<span class="tag">a</span>>
+</code></pre></figure>
+      <p>
+        To add an alt text specific to the full-resolution image, simply add the
+        attribute <code><span class="attr">data-llb-alt</span></code>:
       </p>
       <figure class="full-width">
       <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span> <span class="highlight">data-llb-alt="…"</span>>
-  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="highlight">alt="…"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
 &lt;/<span class="tag">a</span>>
 </code></pre></figure>
     </section>
@@ -109,8 +120,7 @@
       </p>
       <p style="text-align:center">
         <a href="images/Mini_prato_tipico_brasileiro.png"
-          data-llb-src="href"
-          data-llb-alt="Photograph of peanuts on a wooden table.">
+          data-llb-src="href">
           <img src="images/Mini_prato_tipico_brasileiro-250p.png"
                alt="Photograph of peanuts on a wooden table.">
         </a>
@@ -123,9 +133,7 @@
       </p>
       <figure class="full-width">
         <figcaption>Code for this example:</figcaption>
-      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span>
-   <span class="attr">data-llb-src</span>=<span class="str">"href"</span>
-   <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span>>
   &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
 &lt;/<span class="tag">a</span>>
 &lt;<span class="tag">span</span> <span class="attr">data-llb-caption</span>>
@@ -133,8 +141,10 @@
 &lt;/<span class="tag">span</span>>
 </code></pre></figure>
       <p>
-        The element with the <code><span class="attr">data-llb-caption</span></code> attribute will be
-        replaced by a <code>&lt;<span class="tag">figcaption</span>></code> element in the lightbox.
+        The element with the <code><span class="attr">data-llb-caption</span></code>
+        attribute will be hidden in the main page, and its contents will be
+        placed inside a <code>&lt;<span class="tag">figcaption</span>></code>
+        element in the lightbox.
       </p>
       <p class="warning">
         Be aware of permitted contents in HTML. For example, a
@@ -152,8 +162,7 @@
       <div class="gallery">
         <figure>
           <a href="images/unsplash-TysS85XkjgI.jpg"
-            data-llb-src="href"
-            data-llb-alt="Photograph of peanuts on a wooden table.">
+            data-llb-src="href">
             <img src="images/unsplash-TysS85XkjgI-250p.jpg"
                  alt="Photograph of peanuts on a wooden table.">
           </a>
@@ -187,8 +196,7 @@
         </figure>
         <figure>
           <a href="images/unsplash-0v_1TPz1uXw.jpg"
-            data-llb-src="href"
-            data-llb-alt="A partially unpeeled banana.">
+            data-llb-src="href">
             <img src="images/unsplash-0v_1TPz1uXw-250p.jpg"
                  alt="A partially unpeeled banana.">
           </a>
@@ -224,9 +232,7 @@
       <figure class="full-width">
         <figcaption>Code for this example:</figcaption>
       <pre><code>&lt;<span class="tag">figure</span>>
-  &lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span>
-     <span class="attr">data-llb-src</span>=<span class="str">"href"</span>
-     <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
+  &lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span>>
     &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
   &lt;/<span class="tag">a</span>>
   &lt;<span class="tag">div</span> <span class="attr">data-llb-caption</span>>
@@ -268,7 +274,12 @@
 &lt;/<span class="tag">a</span>>
 </code></pre></figure>
       <p>
-        Alternatively, you could use a button, like this:
+        Note that, since this example does not have an <code>&lt;<span class="tag">img</span>></code>
+        element with alt text as its first child, the <code><span class="attr">data-llb-alt</span></code>
+        attribute is used.
+      </p>
+      <p>
+        You could, in theory, use a button instead of an anchor, like this:
         <button data-llb-src="images/unsplash-0v_1TPz1uXw.jpg">example button</button>
         <span data-llb-caption>
           Photo published on 12 June 2018 at
