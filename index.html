@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>LiteLightbox</title>
+  <meta content="Matheus Avellar" name="author">
+  <meta name="description" content="LiteLightbox – A lightweight, plug'n'play lightbox JS library.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <style>
+body {
+  background-color: #fefefe;
+  color: #010101;
+  font-family: sans-serif;
+  margin: .75rem;
+}
+a[href] {
+  text-decoration: none;
+  color: #0076d3;
+}
+a[href]:hover,
+a[href]:focus,
+a[href]:active {
+  text-decoration: underline;
+}
+
+header, main, footer {
+  max-width: 768px;
+  margin: auto;
+}
+main > section > p {
+  margin: .5rem 0;
+  text-indent: 2rem;
+}
+main > section > figure {
+  border: 1px solid #888;
+  border-radius: 4px;
+  padding: .5rem;
+  margin: .5rem auto;
+  width: min-content;
+  box-sizing: border-box;
+}
+main > section > figure.full-width {
+  width: 100%;
+  margin: 0;
+}
+main > section > figure > figcaption > p {
+  margin: 0;
+}
+main > section {
+  clear: both;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LiteLightbox</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Simple example</h2>
+      <figure class="float-left">
+        <a href="images/1-real-2018-miolo.png"
+          data-llb="img" data-llb-src="images/1-real-2018-miolo.png">
+          <img src="images/1-real-2018-miolo-250p.jpg"
+               alt="Photograph of a broken Brazilian coin.">
+        </a>
+      </figure>
+      <p>
+        Photo by <a href="https://commons.wikimedia.org/wiki/User:Avelludo">User:Avelludo</a>
+        (that's me!) on <a href="https://commons.wikimedia.org/wiki/File:1-real-2018-miolo.png">Wikimedia Commons</a>.
+      </p>
+    </section>
+    <section>
+      <figure class="full-width">
+        <figcaption>Code for this example:</figcaption>
+      <pre><code>
+&lt;figure>
+  &lt;a href="big-version.png"
+     data-llb="img"
+     data-llb-src="big-version.png">
+    &lt;img src="thumbnail.jpg" alt="Alt text.">
+  &lt;/a>
+&lt;/figure>
+</code></pre></figure>
+    </section>
+    <section>
+      <h2>Example with custom captions</h2>
+      <p>
+        Note that the main page caption doesn't need to equal the lightbox
+        caption. Also, as seen on the first example, both or either can be
+        missing without causing any issue.
+      </p>
+      <figure class="float-right">
+        <a href="images/unsplash-TysS85XkjgI.jpg"
+          data-llb="img" data-llb-src="images/unsplash-TysS85XkjgI.jpg">
+          <img src="images/unsplash-TysS85XkjgI-250p.jpg"
+               alt="Photograph of peanuts on a wooden table.">
+        </a>
+        <figcaption>
+          <p>
+            Photo by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>
+            on <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>.
+          </p>
+        </figcaption>
+        <div hidden data-llb-caption>
+          <p>
+            Photo published on December 3, 2019 at
+            <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>
+            by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>.
+          </p>
+          <dl>
+            <dt>Camera</dt>
+            <dd>Canon, EOS REBEL T3i</dd>
+          </dl>
+          <dl>
+            <dt>Lens</dt>
+            <dd>50.0mm <em>f</em>/2.2</dd>
+            <dd>1/100s</dd>
+            <dd>ISO 200</dd>
+          </dl>
+          <dl>
+            <dt>Dimensions</dt>
+            <dd>4902 × 3268</dd></dl>
+          </div>
+        </div>
+      </figure>
+    </section>
+    <section>
+      <figure class="full-width">
+        <figcaption>Code for this example:</figcaption>
+      <pre><code>
+&lt;figure>
+  &lt;a href="big-version.png"
+     data-llb="img"
+     data-llb-src="big-version.png">
+    &lt;img src="thumbnail.jpg" alt="Alt text.">
+  &lt;/a>
+  &lt;figcaption>
+    ...
+  &lt;/figcaption>
+  &lt;div hidden data-llb-caption>
+    ...
+  &lt;/div>
+&lt;/figure>
+</code></pre></figure>
+    </section>
+  </main>
+  <footer>
+    
+  </footer>
+  <link href="litelightbox.css" rel="stylesheet" type="text/css">
+  <script src="litelightbox.js"></script>
+</body>
+</html>
