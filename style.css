@@ -1,0 +1,113 @@
+body {
+  background-color: #fdfeff;
+  color: #222;
+  font-family: "Inter var", Inter, Roboto, sans-serif;
+  margin: .75rem;
+}
+a[href] {
+  text-decoration: none;
+  color: #0076d3;
+}
+a[href]:hover,
+a[href]:focus,
+a[href]:active {
+  text-decoration: underline;
+}
+header, main, footer {
+  max-width: 768px;
+  margin: auto;
+}
+main > section > p {
+  margin: .5rem 0;
+  line-height: 1.25;
+}
+.gallery {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+main > section > figure,
+.gallery > figure {
+  border: 1px solid #d8d8d8;
+  border-radius: 4px;
+  padding: .5rem;
+  margin: 1rem auto;
+  width: min-content;
+  box-sizing: border-box;
+  box-shadow: 2px 2px 5px #e5e5e5;
+  background-color: #fff;
+}
+.gallery > figure {
+  margin: 0;
+}
+main > section > figure.full-width {
+  width: 100%;
+}
+main > section > figure > figcaption,
+.gallery > figure > figcaption {
+  color: #696969;
+  font-size: 80%;
+}
+main > section > figure > figcaption > p,
+.gallery > figure > figcaption > p {
+  margin: 0;
+}
+main > section > figure img,
+.gallery > figure img {
+  border-radius: 2px;
+}
+section+section {
+  margin-top: 5rem;
+}
+footer {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+  text-align: right;
+  color: #b0b0b0;
+}
+pre {
+  margin: 0;
+  overflow-x: auto;
+}
+code {
+  font-size: 125%;
+}
+hr {
+  height: 2.5px;
+  background-color: #b0b0b0;
+  border: 0;
+  margin: 3rem auto;
+  width: 50%;
+}
+p.warning {
+  position: relative;
+  background-color: #fffce9;
+  border: 2px solid #f2d5a0;
+  border-radius: 4px;
+  padding: 1rem 1rem 1rem 3rem;
+}
+p.warning::before {
+content: "";
+  position: absolute;
+  left: 1em;
+  color: #de8500;
+  width: 1.5em;
+  height: 1.5em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23de8500' d='M10 3H14V14H10V3M10 21V17H14V21H10Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+code .attr {
+  color: #956a00;
+}
+code .str {
+  color: #336fdb;
+}
+code .tag {
+  color: darkred;
+}
+code .highlight {
+  background-color: #c9f8c8;
+}

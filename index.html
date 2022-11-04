@@ -7,149 +7,301 @@
   <meta name="description" content="LiteLightbox – A lightweight, plug'n'play lightbox JS library.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <style>
-body {
-  background-color: #fefefe;
-  color: #010101;
-  font-family: sans-serif;
-  margin: .75rem;
-}
-a[href] {
-  text-decoration: none;
-  color: #0076d3;
-}
-a[href]:hover,
-a[href]:focus,
-a[href]:active {
-  text-decoration: underline;
-}
-
-header, main, footer {
-  max-width: 768px;
-  margin: auto;
-}
-main > section > p {
-  margin: .5rem 0;
-  text-indent: 2rem;
-}
-main > section > figure {
-  border: 1px solid #888;
-  border-radius: 4px;
-  padding: .5rem;
-  margin: .5rem auto;
-  width: min-content;
-  box-sizing: border-box;
-}
-main > section > figure.full-width {
-  width: 100%;
-  margin: 0;
-}
-main > section > figure > figcaption > p {
-  margin: 0;
-}
-main > section {
-  clear: both;
-}
-  </style>
+  <link rel="preconnect" href="https://cdn.avl.la/" crossorigin>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
   <header>
     <h1>LiteLightbox</h1>
+    <p>
+      This is a demo page for the LiteLightbox "library"(?). Check the source
+      code at <a href="https://github.com/MatheusAvellar/LiteLightbox">GitHub</a>.
+    </p>
+    <p>Table of contents:</p>
+    <ol>
+      <li><a href="#simple">Simplest example</a></li>
+      <li><a href="#captions">Lightbox captions</a></li>
+      <li><a href="#no-previews">No previews</a></li>
+    </ol>
   </header>
+  <hr>
   <main>
     <section>
-      <h2>Simple example</h2>
-      <figure class="float-left">
+      <h2>What is it?</h2>
+      <p>
+        This code aims to create a progressively enhanced, lightweight,
+        Wikipedia-like lightbox plugin in vanilla JS. LiteLightbox is comprised
+        of <strong>1,391 bytes</strong> of raw minified JavaScript, at
+        <a href="litelightbox.min.js">litelightbox.min.js</a>, and
+        <strong>2,672 bytes</strong> of raw minified CSS, at
+        <a href="litelightbox.min.css">litelightbox.min.css</a>, totalling a bit
+        over 4&nbsp;KB of uncompressed goodies.
+      </p>
+      <figure class="full-width">
+        <pre><code>&lt;<span class="tag">link</span> <span class="attr">href</span>=<span class="str">"litelightbox.min.css"</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">type</span>=<span class="str">"text/css"</span>>
+&lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"litelightbox.min.js"</span>>&lt;/<span class="tag">script</span>></code></pre>
+      </figure>
+      <p>
+        <b>What's a lightbox?</b> It's that thing where you see a thumbnail of an image
+        and, when you click it, it expands into the full-resolution image.
+      </p>
+      <p>
+        <b>Why would you use it?</b> Well, ideally, you don't want to load huge,
+        hundred-KB images into a user's browser unless they want to see them.
+        So, instead, you can load small previews and wait for users to click on
+        them to expand.
+      </p>
+    </section>
+    <section>
+      <h2 id="simple">
+        <a href="#simple">#</a>
+        Simplest example
+      </h2>
+      <p>
+        This is a simple, common use case. No captions, just a simple image.
+        The thumbnail is wrapped in an anchor, which acts as the fallback for
+        users with JavaScript disabled.
+      </p>
+      <p style="text-align:center">
         <a href="images/1-real-2018-miolo.png"
-          data-llb="img" data-llb-src="images/1-real-2018-miolo.png">
+          data-llb-src="href"
+          data-llb-alt="Photograph of a broken Brazilian coin.">
           <img src="images/1-real-2018-miolo-250p.jpg"
                alt="Photograph of a broken Brazilian coin.">
         </a>
-      </figure>
-      <p>
-        Photo by <a href="https://commons.wikimedia.org/wiki/User:Avelludo">User:Avelludo</a>
-        (that's me!) on <a href="https://commons.wikimedia.org/wiki/File:1-real-2018-miolo.png">Wikimedia Commons</a>.
       </p>
-    </section>
-    <section>
       <figure class="full-width">
         <figcaption>Code for this example:</figcaption>
-      <pre><code>
-&lt;figure>
-  &lt;a href="big-version.png"
-     data-llb="img"
-     data-llb-src="big-version.png">
-    &lt;img src="thumbnail.jpg" alt="Alt text.">
-  &lt;/a>
-&lt;/figure>
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"big-version.png"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span>>
+&lt;/<span class="tag">a</span>>
+</code></pre></figure>
+      <p>
+        Alternatively, if your trigger is an anchor which links to the
+        full-resolution image via <code><span class="attr">href</span></code> already, you don't need to
+        write the path again into <code><span class="attr">data-llb-src</span></code>; instead, you can
+        pass a value of "href" to it:
+      </p>
+      <figure class="full-width">
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="highlight">"href"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span>>
+&lt;/<span class="tag">a</span>>
+</code></pre></figure>
+      <p>
+        Don't forget your alt text! To add one to the full-resolution image,
+        simply add the attribute <code><span class="attr">data-llb-alt</span></code>:
+      </p>
+      <figure class="full-width">
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span> <span class="highlight">data-llb-alt="…"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="highlight">alt="…"</span>>
+&lt;/<span class="tag">a</span>>
 </code></pre></figure>
     </section>
     <section>
-      <h2>Example with custom captions</h2>
+      <h2 id="captions">
+        <a href="#captions">#</a>
+        Lightbox captions
+      </h2>
       <p>
-        Note that the main page caption doesn't need to equal the lightbox
-        caption. Also, as seen on the first example, both or either can be
-        missing without causing any issue.
+        You can, of course, include captions in the lightbox. Note that the
+        lightbox captions do not show up in "thumbnail mode"; only when the
+        lightbox is opened. Here's an example (click to see image attribution):
       </p>
-      <figure class="float-right">
-        <a href="images/unsplash-TysS85XkjgI.jpg"
-          data-llb="img" data-llb-src="images/unsplash-TysS85XkjgI.jpg">
-          <img src="images/unsplash-TysS85XkjgI-250p.jpg"
+      <p style="text-align:center">
+        <a href="images/Mini_prato_tipico_brasileiro.png"
+          data-llb-src="href"
+          data-llb-alt="Photograph of peanuts on a wooden table.">
+          <img src="images/Mini_prato_tipico_brasileiro-250p.png"
                alt="Photograph of peanuts on a wooden table.">
         </a>
-        <figcaption>
-          <p>
-            Photo by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>
-            on <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>.
-          </p>
-        </figcaption>
-        <div hidden data-llb-caption>
-          <p>
-            Photo published on December 3, 2019 at
-            <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>
-            by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>.
-          </p>
-          <dl>
-            <dt>Camera</dt>
-            <dd>Canon, EOS REBEL T3i</dd>
-          </dl>
-          <dl>
-            <dt>Lens</dt>
-            <dd>50.0mm <em>f</em>/2.2</dd>
-            <dd>1/100s</dd>
-            <dd>ISO 200</dd>
-          </dl>
-          <dl>
-            <dt>Dimensions</dt>
-            <dd>4902 × 3268</dd></dl>
-          </div>
-        </div>
-      </figure>
-    </section>
-    <section>
+        <span data-llb-caption>
+          Photo taken on 8 June 2020 by
+          <a href="https://commons.wikimedia.org/wiki/User:Avelludo">User:Avelludo</a>.
+          Available at
+          <a href="https://commons.wikimedia.org/wiki/File:Mini_prato_t%C3%ADpico_brasileiro.png">Wikimedia Commons</a>.
+        </span>
+      </p>
       <figure class="full-width">
         <figcaption>Code for this example:</figcaption>
-      <pre><code>
-&lt;figure>
-  &lt;a href="big-version.png"
-     data-llb="img"
-     data-llb-src="big-version.png">
-    &lt;img src="thumbnail.jpg" alt="Alt text.">
-  &lt;/a>
-  &lt;figcaption>
-    ...
-  &lt;/figcaption>
-  &lt;div hidden data-llb-caption>
-    ...
-  &lt;/div>
-&lt;/figure>
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span>
+   <span class="attr">data-llb-src</span>=<span class="str">"href"</span>
+   <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
+  &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
+&lt;/<span class="tag">a</span>>
+&lt;<span class="tag">span</span> <span class="attr">data-llb-caption</span>>
+  (full-resolution caption)
+&lt;/<span class="tag">span</span>>
 </code></pre></figure>
+      <p>
+        The element with the <code><span class="attr">data-llb-caption</span></code> attribute will be
+        replaced by a <code>&lt;<span class="tag">figcaption</span>></code> element in the lightbox.
+      </p>
+      <p class="warning">
+        Be aware of permitted contents in HTML. For example, a
+        <code>&lt;<span class="tag">div</span>></code> element is not allowed inside a
+        <code>&lt;<span class="tag">p</span>></code> element. So, when building your caption with custom
+        HTML, make sure you're not breaking the DOM, so that your captions show
+        up properly.
+      </p>
+      <div style="margin-top:2.5rem;"></div>
+      <p>
+        With lightbox captions, images can have two different contexts – a
+        shortened caption that goes alongside the thumbnail, and a longer
+        caption that appears with the lightbox:
+      </p>
+      <div class="gallery">
+        <figure>
+          <a href="images/unsplash-TysS85XkjgI.jpg"
+            data-llb-src="href"
+            data-llb-alt="Photograph of peanuts on a wooden table.">
+            <img src="images/unsplash-TysS85XkjgI-250p.jpg"
+                 alt="Photograph of peanuts on a wooden table.">
+          </a>
+          <div data-llb-caption>
+            <p>
+              Photo published on 3 December 2019 at
+              <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>
+              by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>.
+            </p>
+            <dl>
+              <dt>Camera</dt>
+              <dd>Canon, EOS REBEL T3i</dd>
+            </dl>
+            <dl>
+              <dt>Lens</dt>
+              <dd>50.0mm <em>f</em>/2.2</dd>
+              <dd>1/100s</dd>
+              <dd>ISO 200</dd>
+            </dl>
+            <dl>
+              <dt>Dimensions</dt>
+              <dd>4902 × 3268</dd>
+            </dl>
+          </div>
+          <figcaption>
+            <p>
+              Photo by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>
+              on <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>.
+            </p>
+          </figcaption>
+        </figure>
+        <figure>
+          <a href="images/unsplash-0v_1TPz1uXw.jpg"
+            data-llb-src="href"
+            data-llb-alt="A partially unpeeled banana.">
+            <img src="images/unsplash-0v_1TPz1uXw-250p.jpg"
+                 alt="A partially unpeeled banana.">
+          </a>
+          <div data-llb-caption>
+            <p>
+              Photo published on 12 June 2018 at
+              <a href="https://unsplash.com/photos/0v_1TPz1uXw">Unsplash</a>
+              by <a href="https://unsplash.com/@charlesdeluvio">Charles Deluvio</a>.
+            </p>
+            <dl>
+              <dt>Camera</dt>
+              <dd>Canon, EOS 6D</dd>
+            </dl>
+            <dl>
+              <dt>Lens</dt>
+              <dd>40.0mm <em>f</em>/4.0</dd>
+              <dd>1/50s</dd>
+              <dd>ISO 250</dd>
+            </dl>
+            <dl>
+              <dt>Dimensions</dt>
+              <dd>2791 × 3907</dd>
+            </dl>
+          </div>
+          <figcaption>
+            <p>
+              Photo by <a href="https://unsplash.com/@isaidzib">Isai Dzib</a>
+              on <a href="https://unsplash.com/photos/TysS85XkjgI">Unsplash</a>.
+            </p>
+          </figcaption>
+        </figure>
+      </div>
+      <figure class="full-width">
+        <figcaption>Code for this example:</figcaption>
+      <pre><code>&lt;<span class="tag">figure</span>>
+  &lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span>
+     <span class="attr">data-llb-src</span>=<span class="str">"href"</span>
+     <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
+    &lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-version.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
+  &lt;/<span class="tag">a</span>>
+  &lt;<span class="tag">div</span> <span class="attr">data-llb-caption</span>>
+    &lt;<span class="tag">p</span>>(full-resolution caption 1)&lt;/<span class="tag">p</span>>
+    &lt;<span class="tag">p</span>>(full-resolution caption 2)&lt;/<span class="tag">p</span>>
+  &lt;/<span class="tag">div</span>>
+  &lt;<span class="tag">figcaption</span>>
+    (thumbnail caption)
+  &lt;/<span class="tag">figcaption</span>>
+&lt;/<span class="tag">figure</span>>
+</code></pre></figure>
+      <p class="warning">
+        Note that, to include a lightbox caption, the caption wrapper element
+        (that is, the element with the <code><span class="attr">data-llb-caption</span></code> attribute)
+        <strong>MUST</strong> be the next direct sibling of the element with
+        the <code><span class="attr">data-llb-src</span></code> attribute. In this example, the
+        <code>&lt;<span class="tag">figcaption</span>></code> element <strong>MUST</strong> come directly
+        after the <code><span class="attr">data-llb-caption</span></code> element.
+      </p>
+    </section>
+    <section>
+      <h2 id="no-previews">
+        <a href="#no-previews">#</a>
+        No previews
+      </h2>
+      <div>
+        This library works by hooking an "on click" event to an element with a
+        <code><span class="attr">data-llb-src</span></code> attribute. This
+        means that you don't need a thumbnail image to make it work. A simple
+        anchor (<code>&lt;<span class="tag">a</span>></code>) will suffice:
+        <a href="images/unsplash-0v_1TPz1uXw.jpg"
+          data-llb-src="href"
+          data-llb-alt="A partially unpeeled banana.">open big image</a>.
+      </div>
+      <figure class="full-width">
+        <figcaption>Code for this example:</figcaption>
+      <pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span> <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
+  open big image
+&lt;/<span class="tag">a</span>>
+</code></pre></figure>
+      <p>
+        Alternatively, you could use a button, like this:
+        <button data-llb-src="images/unsplash-0v_1TPz1uXw.jpg">example button</button>
+        <span data-llb-caption>
+          Photo published on 12 June 2018 at
+          <a href="https://unsplash.com/photos/0v_1TPz1uXw">Unsplash</a>
+          by <a href="https://unsplash.com/@charlesdeluvio">Charles Deluvio</a>.
+        </span>
+        <br>
+        Or any other element, like a <code>&lt;<span class="tag">span</span>></code>:
+        <span tabindex="0" role="button" style="background-color:#de64ed;color:#fff"
+        data-llb-src="images/unsplash-0v_1TPz1uXw.jpg">example span</span>
+        <span data-llb-caption>
+          Photo published on 12 June 2018 at
+          <a href="https://unsplash.com/photos/0v_1TPz1uXw">Unsplash</a>
+          by <a href="https://unsplash.com/@charlesdeluvio">Charles Deluvio</a>.
+        </span>
+      </p>
+      <p class="warning">
+        Keep in mind that, in the event that the user does not have JavaScript
+        turned on, anchors will maintain the native behavior of redirecting the
+        user to the full-resolution image. Other elements, such as
+        <code>&lt;<span class="tag">button</span>></code>s, may not have these benefits. Additionally,
+        remember to make your trigger element accessible to keyboard users.
+      </p>
     </section>
   </main>
   <footer>
-    
+    <p>
+      Made with ♥︎&#xFE0E;<!--&#xFE0E;[Ref] stackoverflow.com/a/38452396/4824627-->
+      by Matheus Avellar<br>
+    </p>
   </footer>
-  <link href="litelightbox.css" rel="stylesheet" type="text/css">
-  <script src="litelightbox.js"></script>
+  <link href="litelightbox.min.css" rel="stylesheet" type="text/css">
+  <script src="litelightbox.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.avl.la/font/inter.css">
 </body>
 </html>
