@@ -94,7 +94,10 @@
     openBtn.href = "";
     // Remove <body> styling
     document.body.classList.remove("llb-modal");
-    // Do back() so we don't flood user's browsing history
-    window.history.back();
+    // If the user hasn't pressed back to close the dialog
+    if(location.hash == "#lightbox") {
+      // Do back() so we don't flood their browsing history
+      window.history.back();
+    }
   });
 })();
