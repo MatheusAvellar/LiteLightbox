@@ -31,15 +31,14 @@
 			<h2>What is it?</h2>
 			<p>
 				This code aims to create a progressively enhanced, lightweight,
-				Wikipedia-like lightbox plugin in vanilla JS. LiteLightbox is comprised
-				of <strong>1,560 bytes</strong> of raw minified JavaScript, at
+				Wikipedia-like lightbox plugin in vanilla JS. LiteLightbox is about
+				<strong>2.7 KB</strong> of raw minified JavaScript, at
 				<a href="litelightbox.min.js">litelightbox.min.js</a> (uncompressed!).
 			</p>
 			<p>
 				Additionally, for the default styling <i>a la</i> Wikipedia, there's
-				<strong>2,672 bytes</strong> of raw minified CSS, at
-				<a href="litelightbox.min.css">litelightbox.min.css</a>, totalling a bit
-				over 4&nbsp;KB of uncompressed goodies.
+				around <strong>5 KB</strong> of raw minified CSS, at
+				<a href="litelightbox.min.css">litelightbox.min.css</a>.
 			</p>
 			<figure class="full-width">
 				<pre><code>&lt;<span class="tag">link</span> <span class="attr">href</span>=<span class="str">"litelightbox.min.css"</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">type</span>=<span class="str">"text/css"</span>>
@@ -50,7 +49,7 @@
 				and, when you click it, it expands into the full-resolution image.
 			</p>
 			<p>
-				<b>Why would you use it?</b> Well, ideally, you don't want to load huge,
+				<b>Why should I use it?</b> Well, ideally, you don't want to load huge,
 				hundred-KB images into a user's browser unless they want to see them.
 				So, instead, you can load small previews and wait for users to click on
 				them to expand.
@@ -271,6 +270,12 @@
 				<a href="#galleries">#</a>
 				Galleries
 			</h2>
+			<p>
+				You can create galleries by adding the <code><span class="attr">data-llb-gallery</span></code>
+				attribute on the element that has <code><span class="attr">data-llb-src</span></code>.
+				Once open, the lightbox will display arrows for navigation. The user may
+				also press the arrow keys on the keyboard to flip through the gallery.
+			</p>
 			<div class="gallery">
 				<figure>
 					<a href="images/unsplash-XeHejTi3bbk.jpg"
@@ -342,6 +347,13 @@
 	&lt;<span class="tag">img</span> <span class="attr">src</span>=<span class="str">"small-2.png"</span> <span class="attr">alt</span>=<span class="str">"…"</span>>
 &lt;/<span class="tag">a</span>>
 </code></pre></figure>
+			<p>
+				Currently, each page can only have a single gallery; that is, every
+				image tagged with <code><span class="attr">data-llb-gallery</span></code>
+				will be part of the same gallery. A further customization
+				option will be added in the future, allowing you to specify an identifier
+				for each separate gallery you wish to create.
+			</p>
 		</section>
 		<section>
 			<h2 id="no-previews">
@@ -401,8 +413,10 @@
 			by Matheus Avellar<br>
 		</p>
 	</footer>
-	<link href="litelightbox.css" rel="stylesheet" type="text/css">
-	<script src="litelightbox.js"></script>
+	<link href="litelightbox.min.css" rel="stylesheet" type="text/css">
+	<!-- Minified with toptal.com/developers/cssminifier -->
+	<script src="litelightbox.min.js"></script>
+	<!-- Minified with freeformatter.com/javascript-minifier.html -->
 	<link rel="stylesheet" href="https://cdn.avl.la/font/inter.css">
 </body>
 </html>

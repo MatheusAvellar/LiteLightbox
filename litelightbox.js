@@ -59,6 +59,13 @@
 			return false;
 		});
 	}
+	// Properties used for galleries
+	const gallery_hdlr = {
+		keyDown: false,
+		goPrev: null,
+		goNext: null
+	};
+
 	// Function run on `a[data-llb-src]` click
 	function openModal(anchor) {
 		let data = anchor.dataset;
@@ -98,6 +105,8 @@
 			// Make sure prev/next buttons are hidden
 			prevBtn.className = "";
 			nextBtn.className = "";
+			prevBtn.onclick = gallery_hdlr.goPrev = null;
+			nextBtn.onclick = gallery_hdlr.goNext = null;
 		}
 		// Otherwise, if this image IS part of a gallery
 		else {
@@ -138,20 +147,26 @@
 			// Then reset the contents of <dialog> via cleanupDialog()
 			// Finally, we load the contents of the new anchor
 			// And return false to, again, prevent default <form> behavior
-			prevBtn.onclick = (evt) => {
-				evt.preventDefault();
-				cleanupDialog();
-				openModal(previous_anchor);
-				return false;
-			};
-			nextBtn.onclick = (evt) => {
-				evt.preventDefault();
-				cleanupDialog();
-				openModal(next_anchor);
-				return false;
-			};
-
-			// TODO: left/right arrow keys should trigger prevBtn/nextBtn click()
+			if(previous_anchor) {
+				prevBtn.onclick = gallery_hdlr.goPrev = (evt) => {
+					if(evt) evt.preventDefault();
+					cleanupDialog();
+					openModal(previous_anchor);
+					return false;
+				};
+			} else {
+				prevBtn.onclick = gallery_hdlr.goPrev = null;
+			}
+			if(next_anchor) {
+				nextBtn.onclick = gallery_hdlr.goNext = (evt) => {
+					if(evt) evt.preventDefault();
+					cleanupDialog();
+					openModal(next_anchor);
+					return false;
+				};
+			} else {
+				nextBtn.onclick = gallery_hdlr.goNext = null;
+			}
 		}
 
 		// Prevent <body> scrolling while modal is open
@@ -169,6 +184,32 @@
 		// If it has already closed, this is a no-op.
 		dialog.close();
 	});
+	// Gallery previous/next on arrow key press
+	window.addEventListener("keydown", (evt) => {
+		// If IME is doing stuff, ignore it
+		if(evt.isComposing || evt.keyCode === 229)
+			return;
+
+		if(!gallery_hdlr.keyDown) {
+			if(evt.key === "ArrowLeft" && typeof gallery_hdlr.goPrev === "function") {
+				gallery_hdlr.goPrev();
+				gallery_hdlr.keyDown = true;
+			}
+			if(evt.key === "ArrowRight" && typeof gallery_hdlr.goNext === "function") {
+				gallery_hdlr.goNext();
+				gallery_hdlr.keyDown = true;
+			}
+		}
+	});
+	window.addEventListener("keyup", (evt) => {
+		// If IME is doing stuff, ignore it
+		if(evt.isComposing || evt.keyCode === 229)
+			return;
+		// Prevent multiple firings of the "same" key press
+		if(evt.key === "ArrowLeft" || evt.key === "ArrowRight")
+			gallery_hdlr.keyDown = false;
+	});
+
 
 	// Function to reset the contents of <dialog>
 	function cleanupDialog() {
