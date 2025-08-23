@@ -9,17 +9,17 @@ Check out the [demo/documentation](https://lab.avl.la/LiteLightbox/)! It's mobil
 It's a [lightbox](https://en.wikipedia.org/wiki/Lightbox_(JavaScript)) plugin for the web – when you click a thumbnail, it'll open a fullscreen modal displaying a higher resolution version of it, like this:
 
 <table>
-  <tr>
-    <th>Main page</th><th>Lightbox open</th>
-  </tr>
-  <tr>
-    <td>
-      <img width="400" alt="2022-11-05_16-26-50" src="https://user-images.githubusercontent.com/1719996/200137549-27d3df60-cac0-4afa-b749-39d468cb24dd.png">
-    </td>
-    <td>
-      <img width="400" alt="2022-11-05_16-26-59" src="https://user-images.githubusercontent.com/1719996/200137546-80fecc03-272d-4bf7-8f85-b7b86584f0f9.png">
-    </td>
-  </tr>
+	<tr>
+		<th>Main page</th><th>Lightbox open</th>
+	</tr>
+	<tr>
+		<td>
+			<img width="400" alt="2022-11-05_16-26-50" src="https://user-images.githubusercontent.com/1719996/200137549-27d3df60-cac0-4afa-b749-39d468cb24dd.png">
+		</td>
+		<td>
+			<img width="400" alt="2022-11-05_16-26-59" src="https://user-images.githubusercontent.com/1719996/200137546-80fecc03-272d-4bf7-8f85-b7b86584f0f9.png">
+		</td>
+	</tr>
 </table>
 
 ## Why did you make another lightbox library? Didn't you know we have like thousands of those?
@@ -33,6 +33,10 @@ I needed a small and lightweight lightbox that mimicked Wikipedia's to use in a 
 ## TODO (= Cons)
 - Figure out browser compatibility (probably nothing incredible, I'll be honest)
 - Figure out if it's acceptably accessible (it probably is! I think)
+- Right-click on opened image should allow 'open in new tab'/'save image' etc
+- Large image loading indicator
+- Only run script on page load; `document.body` is null if script is put on `<head>`
+- Allow for multiple galleries
 
 ## How about adding (...)?
 No, thanks! This is mostly a personal project, fit to my (very) specific needs. If you'd like to add, remove, or change anything, feel free to fork this and build your own personalized version! :)
