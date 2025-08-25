@@ -1,6 +1,6 @@
 # LiteLightbox
-A lightweight, plug'n'play lightbox plugin for the web, written in about 100 lines of pure vanilla JavaScript.
-Minifies to about 1.5&nbsp;KB, `gzip`s to about 750&nbsp;B.
+A lightweight, plug'n'play lightbox plugin for the web, written in about 200 lines of pure vanilla JavaScript.
+Minifies to about 3&nbsp;KB, `gzip`s to a little over 1&nbsp;KB.
 Comes with an optional default stylesheet mimicking Wikipedia's lightbox.
 
 Check out the [demo/documentation](https://lab.avl.la/LiteLightbox/)! It's mobile friendly as well :)
@@ -36,13 +36,11 @@ I needed a small and lightweight lightbox that mimicked Wikipedia's to use in a 
 - Opening things other than images
 
 ## Browser compatibility
-I estimate it to be the following: Chrome 54+ (Nov.2016), Edge 79+ (Jan.2020), Firefox 98+ (Mar.2022), Opera 41+ (Oct.2016), Safari 15.4+ (Mar.2022)
+I estimate it to be the following: Chrome 38+ (Oct.2014), Edge 79+ (Jan.2020), Firefox 98+ (Mar.2022), Opera 41+ (Oct.2016), Safari 15.4+ (Mar.2022)
 
 Due to:
 - [`dialog.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal#browser_compatibility): Chrome 37+, Edge 79+, Firefox 98+, Opera 24+, Safari 15.4+
 - [`for(... of ...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#browser_compatibility): Chrome 38+, Edge 12+, Firefox 13+, Opera 25+, Safari 7+
-- [`Element.prepend()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend#browser_compatibility): Chrome 54+ (Nov.2016), Edge 17+, Firefox 49+, Opera 41+, Safari 10+
-
 
 ## How about adding (...)?
 No, thanks! This is mostly a personal project, fit to my (very) specific needs. If you'd like to add, remove, or change anything, feel free to fork this and build your own personalized version! :)
