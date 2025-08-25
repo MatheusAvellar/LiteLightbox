@@ -1,4 +1,4 @@
-(function LiteLightbox() {
+document.addEventListener("DOMContentLoaded", function() {
 	const dialog = document.createElement("dialog");
 	dialog.id = "llb-dialog";
 	// Leave if user-agent doesn't support <dialog> methods
@@ -40,8 +40,12 @@
 	////
 	const figure = document.createElement("figure");
 	figure.id = "llb-figure";
+	const media = document.createElement("div");
+	media.id = "llb-media";
 	const figcaption = document.createElement("figcaption");
 	figcaption.id = "llb-figcaption";
+
+	figure.appendChild(media);
 	figure.appendChild(figcaption);
 	dialog.appendChild(figure);
 	////
@@ -78,7 +82,6 @@
 		// TODO: support more things beyond images
 		const img = document.createElement("img");
 		img.src = src;
-		img.setAttribute("data-llb-removeme", ""); // We'll use this for cleanup
 		const first_child = anchor.firstElementChild;
 		// If there's an alt text, copy it
 		if("llbAlt" in data) {
@@ -88,8 +91,10 @@
 			// If it does, copy that
 			 img.alt = first_child.alt;
 		}
-		// Add image as first child of <figure>
-		figure.prepend(img);
+		img.addEventListener("load", function() { figure.dataset.loaded = true; });
+		img.addEventListener("error", function() { figure.dataset.loaded = true; });
+		// Add image as first child of <figure> (inside <div>)
+		media.appendChild(img);
 		// If there's a caption, copy it to <figcaption>
 		const caption = anchor.nextElementSibling;
 		if(caption && "llbCaption" in caption.dataset) {
@@ -210,11 +215,12 @@
 			gallery_hdlr.keyDown = false;
 	});
 
-
 	// Function to reset the contents of <dialog>
 	function cleanupDialog() {
 		// On <dialog> close, cleanup after ourselves
-		[...dialog.querySelectorAll("[data-llb-removeme]")].forEach(el => el.remove());
+		[...media.children].forEach(el => el.remove());
+		// Reactivate loading spinner by default
+		figure.dataset.loaded = false;
 		// Remove all child elements
 		while(figcaption.childNodes.length) {
 			figcaption.childNodes[0].remove();
@@ -229,9 +235,8 @@
 		document.body.classList.remove("llb-modal");
 		// If the user hasn't pressed back to close the dialog
 		if(location.hash == "#lightbox") {
-			// Do back() so we don't flood their browsing history
-			window.history.back();
+			// Replace '#lightbox' with empty hash on URL
+			window.history.replaceState({}, "", "#");
 		}
 	});
-
-})();
+});

@@ -31,12 +31,18 @@ I needed a small and lightweight lightbox that mimicked Wikipedia's to use in a 
 - Progressive enhancement – browsers with no support will just have a regular `<a>` linking to the full-res image;
 
 ## TODO (= Cons)
-- Figure out browser compatibility (probably nothing incredible, I'll be honest)
 - Figure out if it's acceptably accessible (it probably is! I think)
-- Right-click on opened image should allow 'open in new tab'/'save image' etc
-- Large image loading indicator
-- Only run script on page load; `document.body` is null if script is put on `<head>`
 - Allow for multiple galleries
+- Opening things other than images
+
+## Browser compatibility
+I estimate it to be the following: Chrome 54+ (Nov.2016), Edge 79+ (Jan.2020), Firefox 98+ (Mar.2022), Opera 41+ (Oct.2016), Safari 15.4+ (Mar.2022)
+
+Due to:
+- [`dialog.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal#browser_compatibility): Chrome 37+, Edge 79+, Firefox 98+, Opera 24+, Safari 15.4+
+- [`for(... of ...)`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of#browser_compatibility): Chrome 38+, Edge 12+, Firefox 13+, Opera 25+, Safari 7+
+- [`Element.prepend()`](https://developer.mozilla.org/en-US/docs/Web/API/Element/prepend#browser_compatibility): Chrome 54+ (Nov.2016), Edge 17+, Firefox 49+, Opera 41+, Safari 10+
+
 
 ## How about adding (...)?
 No, thanks! This is mostly a personal project, fit to my (very) specific needs. If you'd like to add, remove, or change anything, feel free to fork this and build your own personalized version! :)

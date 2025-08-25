@@ -40,6 +40,9 @@
 				around <strong>5 KB</strong> of raw minified CSS, at
 				<a href="litelightbox.min.css">litelightbox.min.css</a>.
 			</p>
+			<p>
+				Add these right before your <code>&lt;/<span class="tag">body</span>></code>:
+			</p>
 			<figure class="full-width">
 				<pre><code>&lt;<span class="tag">link</span> <span class="attr">href</span>=<span class="str">"litelightbox.min.css"</span> <span class="attr">rel</span>=<span class="str">"stylesheet"</span> <span class="attr">type</span>=<span class="str">"text/css"</span>>
 &lt;<span class="tag">script</span> <span class="attr">src</span>=<span class="str">"litelightbox.min.js"</span>>&lt;/<span class="tag">script</span>></code></pre>
@@ -68,7 +71,7 @@
 			<p style="text-align:center">
 				<a href="images/1-real-2018-miolo.png" data-llb-src="href">
 					<img src="images/1-real-2018-miolo-250p.jpg"
-							 alt="Photograph of a broken Brazilian coin.">
+							 alt="A broken Brazilian coin.">
 				</a>
 			</p>
 			<figure class="full-width">
@@ -124,7 +127,7 @@
 				<a href="images/Mini_prato_tipico_brasileiro.png"
 					data-llb-src="href">
 					<img src="images/Mini_prato_tipico_brasileiro-250p.png"
-							 alt="Photograph of peanuts on a wooden table.">
+							 alt="A tiny plate of rice, beans, mashed potatoes and a fried quail egg, alongside a tiny spoon.">
 				</a>
 				<span data-llb-caption>
 					Photo taken on 8 June 2020 by
@@ -175,7 +178,7 @@
 					<a href="images/unsplash-TysS85XkjgI.jpg"
 						data-llb-src="href">
 						<img src="images/unsplash-TysS85XkjgI-250p.jpg"
-								 alt="Photograph of peanuts on a wooden table.">
+								 alt="Handful of peanuts on a wooden table.">
 					</a>
 					<div data-llb-caption>
 						<p>
@@ -360,7 +363,7 @@
 				<a href="#no-previews">#</a>
 				No previews
 			</h2>
-			<div>
+			<p>
 				This library works by hooking an "on click" event to an element with a
 				<code><span class="attr">data-llb-src</span></code> attribute. This
 				means that you don't need a thumbnail image to make it work. A simple
@@ -368,7 +371,7 @@
 				<a href="images/unsplash-0v_1TPz1uXw.jpg"
 					data-llb-src="href"
 					data-llb-alt="A partially unpeeled banana.">open big image</a>.
-			</div>
+			</p>
 			<figure class="full-width">
 				<figcaption>Code for this example:</figcaption>
 			<pre><code>&lt;<span class="tag">a</span> <span class="attr">href</span>=<span class="str">"big-version.png"</span> <span class="attr">data-llb-src</span>=<span class="str">"href"</span> <span class="attr">data-llb-alt</span>=<span class="str">"…"</span>>
@@ -405,6 +408,136 @@
 				<code>&lt;<span class="tag">button</span>></code>s, may not have these benefits. Additionally,
 				remember to make your trigger element accessible to keyboard users.
 			</p>
+		</section>
+		<section>
+			<h2 id="test-cases">
+				<a href="#test-cases">#</a>
+				Test cases
+			</h2>
+			<div>
+				<button data-llb-src="images/very-wide.png">Very wide</button>
+				<button data-llb-src="images/very-wide.png">Very wide with caption</button>
+				<div data-llb-caption>
+					<p>
+						This is a 4000 × 100 image.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+			</div>
+			<div>
+				<button data-llb-src="images/very-tall.png">Very tall</button>
+				<button data-llb-src="images/very-tall.png">Very tall with caption</button>
+				<div data-llb-caption>
+					<p>
+						This is a 100 × 4000 image.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+			</div>
+			<div>
+				<button data-llb-src="images/this-image-doesnt-exist.neither-does-this-format">
+					Failed to load
+				</button>
+				<div data-llb-caption>
+					<p>
+						This image will not load.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+				</div>
+			</div>
 		</section>
 	</main>
 	<footer>
