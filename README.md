@@ -36,7 +36,7 @@ I needed a small and lightweight lightbox that mimicked Wikipedia's to use in a 
 - Opening things other than images
 
 ## Browser compatibility
-I estimate it to be the following: Chrome 38+ (Oct.2014), Edge 79+ (Jan.2020), Firefox 98+ (Mar.2022), Opera 41+ (Oct.2016), Safari 15.4+ (Mar.2022)
+I estimate it to be the following: Chrome 38+ (Oct.2014), Edge 79+ (Jan.2020), Firefox 98+ (Mar.2022), Opera 25+ (Nov.2014), Safari 15.4+ (Mar.2022)
 
 Due to:
 - [`dialog.showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal#browser_compatibility): Chrome 37+, Edge 79+, Firefox 98+, Opera 24+, Safari 15.4+
